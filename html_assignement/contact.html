@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Your Full Name">
+    <meta name="description" content="Contact The Striped Umbrella Spa">
+    <title>Contact Us - The Striped Umbrella Spa</title>
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/images/su_banner.gif" alt="The Striped Umbrella Spa Banner">
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="content">
+            <h2>Contact Us</h2>
+            <form>
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="fname">First Name:* </label>
+                    <input type="text" id="fname" name="fname" maxlength="25" required><br>
+
+                    <label for="lname">Last Name:* </label>
+                    <input type="text" id="lname" name="lname" maxlength="25" required><br>
+
+                    <label for="email">Email:* </label>
+                    <input type="email" id="email" name="email" maxlength="35" required><br>
+
+                    <label for="phone">Please select the music genre(s) you like:</label><br>
+                    <input type="checkbox" id="classic" name="classic" value="classic">
+                    <label for="classic">Classic</label><br>
+                    <input type="checkbox" id="blues" name="blues" value="blues">
+                    <label for="blues">Blues</label><br>
+                    <input type="checkbox" id="jazz" name="jazz" value="jazz">
+                    <label for="jazz">Jazz</label><br>
+                    <input type="checkbox" id="instrumental" name="instrumental" value="instrumental">
+                    <label for="instrumental">Instrumental</label><br>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Your Message</legend>
+                    <label for="source">How did you hear about us? </label>
+                    <select id="source" name="source">
+                        <option value="website" selected>Our website</option>
+                        <option value="friends">Friends</option>
+                        <option value="tv">TV Advertisement</option>
+                        <option value="other">Other</option>
+                    </select><br>
+
+                    <label for="message">Your Message: </label>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+
+                    <input type="checkbox" id="case" name="case" value="case">
+                    <label for="case">Sign me up for email updates</label>
+                    
+
+
+                </fieldset>
+            </form>
+
+            <h3>Find us here:</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.8659975098867!2d-79.3923354238222!3d43.67175667110136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2e0b64e1140d%3A0xd11156503e310196!2sSpa%20at%20Four%20Seasons%20Toronto!5e0!3m2!1sfr!2sca!4v1726680010405!5m2!1sfr!2sca"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </main>
+        <footer>
+            <p>Copyright ©2024 ILAC and EFREI Paris – HTML-CSS major lab-work - created by: BOUILLET Matéo - All rights reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
