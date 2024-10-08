@@ -1,2 +1,2 @@
 # Web_Lab_work
-Lab work 1 and 2
+Lab work 1, 2 and 3
