@@ -5,34 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Geometry</title>
     <style>
-        /* CSS interne */
+        /* Styles pour une meilleure présentation */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
         #main-container {
             width: 70%;
-            background-color: #f0f0f0;
+            background-color: #ffffff;
             margin: 50px auto;
-            padding: 10px;
+            padding: 20px;
             box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #17a2b8;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
 
         section {
-            width: 65%;
-            background-color: #ffffff;
-            border: 1px solid #000;
-            margin: 20px auto;
+            background-color: #e9ecef;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #495057;
+        }
+
+        input[type="text"] {
+            width: 100%;
             padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
             box-sizing: border-box;
+        }
+
+        input[readonly] {
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
         }
 
         .go {
             text-align: center;
+            margin-top: 30px;
         }
 
-        button {
-            margin-top: 10px;
+        .go a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        input[readonly] {
-            background-color: #e9e9e9;
+        .go a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ajout de responsive design pour les petits écrans */
+        @media (max-width: 768px) {
+            #main-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input[type="text"], button {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -123,17 +222,15 @@
     </div>
 
     <script>
-        // JavaScript interne
-
         // Fonction pour calculer l'aire du cercle
         function getCircleArea() {
             let radius = document.getElementById("radius").value.trim();
             radius = parseFloat(radius);
-            if (!isNaN(radius)) {
+            if (isNaN(radius) || radius <= 0) {
+                alert("Please enter a valid number greater than 0 for the radius.");
+            } else {
                 const area = Math.PI * radius * radius;
                 document.getElementById("circle-area").value = area.toFixed(2);
-            } else {
-                alert("Please enter a valid number for the radius.");
             }
         }
 
@@ -143,11 +240,11 @@
             let height = document.getElementById("height").value.trim();
             base = parseFloat(base);
             height = parseFloat(height);
-            if (!isNaN(base) && !isNaN(height)) {
+            if (isNaN(base) || base <= 0 || isNaN(height) || height <= 0) {
+                alert("Please enter valid numbers greater than 0 for both base and height.");
+            } else {
                 const area = 0.5 * base * height;
                 document.getElementById("triangle-area").value = area.toFixed(2);
-            } else {
-                alert("Please enter valid numbers for the base and height.");
             }
         }
 
@@ -155,11 +252,11 @@
         function getSquareArea() {
             let side = document.getElementById("side").value.trim();
             side = parseFloat(side);
-            if (!isNaN(side)) {
+            if (isNaN(side) || side <= 0) {
+                alert("Please enter a valid number greater than 0 for the side.");
+            } else {
                 const area = side * side;
                 document.getElementById("square-area").value = area.toFixed(2);
-            } else {
-                alert("Please enter a valid number for the side length.");
             }
         }
 
@@ -169,11 +266,11 @@
             let height = document.getElementById("height-rect").value.trim();
             width = parseFloat(width);
             height = parseFloat(height);
-            if (!isNaN(width) && !isNaN(height)) {
+            if (isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+                alert("Please enter valid numbers greater than 0 for both width and height.");
+            } else {
                 const area = width * height;
                 document.getElementById("rectangle-area").value = area.toFixed(2);
-            } else {
-                alert("Please enter valid numbers for the width and height.");
             }
         }
     </script>
