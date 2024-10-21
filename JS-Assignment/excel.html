@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Functions</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="excel.html">Excel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Excel Functions</h1>
+            <form id="excel-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="numbers">Enter numbers separated by spaces:</label>
+                    <input type="text" id="numbers" name="numbers" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Function:</label>
+                    <input type="radio" id="sum" name="excel" value="sum" checked>AutoSum
+                    <input type="radio" id="avg" name="excel" value="avg">Average
+                    <input type="radio" id="max" name="excel" value="max">Max
+                    <input type="radio" id="min" name="excel" value="min">Min
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" onclick="myExcelFuns()">Calculate</button>
+                </div>
+            </form>
+            
+            <div id="result">Result will be printed here</div>
+        </section>
+
+        <section>
+            <h2>Change Theme</h2>
+            <button onclick="setTheme('dark')">Dark Mode</button>
+            <button onclick="setTheme('light')">Light Mode</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>ILAC & EFREI - HTML, CSS, and JavaScript Assignment - Matéo BOUILLET</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
