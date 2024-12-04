@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue.js Example</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Canada</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app">
-    <div class="content">
-      <img :src="currentItem.img" alt="Image" class="content-img">
-      <h1 v-if="showTitle">{{ currentItem.title }}</h1>
-      <p v-else>{{ currentItem.def }}</p>
-      <button @click="toggleDisplay">Toggle Title/Definition</button>
-    </div>
-    <div class="navigation">
-      <button @click="previousItem">Previous</button>
-      <button @click="nextItem">Next</button>
-    </div>
-  </div>
+    <div id="app">
+        <header>
+            <h1>Explore Canada</h1>
+            <p>Découvrez les merveilles du Canada, une région à la fois.</p>
+        </header>
 
-  <script src="data/data.js"></script>
-  <script>
-    const app = Vue.createApp({
-      data() {
-        return {
-          items: dataList,
-          currentIndex: 0,
-          showTitle: true,
-        };
-      },
-      computed: {
-        currentItem() {
-          return this.items[this.currentIndex];
-        }
-      },
-      methods: {
-        toggleDisplay() {
-          this.showTitle = !this.showTitle;
-        },
-        nextItem() {
-          this.currentIndex = (this.currentIndex + 1) % this.items.length;
-        },
-        previousItem() {
-          this.currentIndex =
-            (this.currentIndex - 1 + this.items.length) % this.items.length;
-        }
-      }
-    });
+        <main>
+            <div class="card">
+                <div class="image-container">
+                    <img :src="currentItem.img" alt="Image of {{ currentItem.title }}" class="image">
+                </div>
+                <div class="text-container">
+                    <h2 v-if="showTitle">{{ currentItem.title }}</h2>
+                    <p v-else>{{ currentItem.desc }}</p>
+                    <button class="toggle-btn" @click="toggleContent">
+                        {{ showTitle ? 'Voir la description' : 'Voir le titre' }}
+                    </button>
+                </div>
+            </div>
 
-    app.mount('#app');
-  </script>
+            <div class="navigation">
+                <button class="nav-btn" @click="previousItem">⟵ Précédent</button>
+                <button class="nav-btn" @click="nextItem">Suivant ⟶</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Explore Canada. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                items: dataItems,
+                currentIndex: 0,
+                showTitle: true
+            },
+            computed: {
+                currentItem() {
+                    return this.items[this.currentIndex];
+                }
+            },
+            methods: {
+                toggleContent() {
+                    this.showTitle = !this.showTitle;
+                },
+                nextItem() {
+                    this.currentIndex = (this.currentIndex + 1) % this.items.length;
+                },
+                previousItem() {
+                    this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+                }
+            }
+        });
+    </script>
 </body>
 </html>

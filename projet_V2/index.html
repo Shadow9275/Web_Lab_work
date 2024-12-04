@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders Vue App</title>
+    <link rel="stylesheet" href="css/styles_index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>{{ title }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="map.html">Carte</a></li>
+                    <li><a href="form.html">Formulaire</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="invader-display">
+                <img :src="currentItem.img" alt="Image de l'invader" class="content-img">
+                <h2 v-if="showTitle">{{ currentItem.title }}</h2>
+                <p v-else>{{ currentItem.desc }}</p>
+                <button @click="toggleDisplay">Afficher {{ showTitle ? 'la description' : 'le titre' }}</button>
+            </section>
+
+            <div class="navigation">
+                <button @click="previousItem">Précédent</button>
+                <button @click="nextItem">Suivant</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; Space Invaders - Paris</p>
+        </footer>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    title: "Space Invaders à Paris",
+                    items: dataList, // Import depuis data.js
+                    currentIndex: 0,
+                    showTitle: true,
+                };
+            },
+            computed: {
+                currentItem() {
+                    return this.items[this.currentIndex];
+                },
+            },
+            methods: {
+                toggleDisplay() {
+                    this.showTitle = !this.showTitle;
+                },
+                nextItem() {
+                    this.currentIndex = (this.currentIndex + 1) % this.items.length;
+                },
+                previousItem() {
+                    this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+                },
+            },
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+</html>
