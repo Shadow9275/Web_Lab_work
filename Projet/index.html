@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Example</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="content">
+      <img :src="currentItem.img" alt="Image" class="content-img">
+      <h1 v-if="showTitle">{{ currentItem.title }}</h1>
+      <p v-else>{{ currentItem.def }}</p>
+      <button @click="toggleDisplay">Toggle Title/Definition</button>
+    </div>
+    <div class="navigation">
+      <button @click="previousItem">Previous</button>
+      <button @click="nextItem">Next</button>
+    </div>
+  </div>
+
+  <script src="data/data.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          items: dataList,
+          currentIndex: 0,
+          showTitle: true,
+        };
+      },
+      computed: {
+        currentItem() {
+          return this.items[this.currentIndex];
+        }
+      },
+      methods: {
+        toggleDisplay() {
+          this.showTitle = !this.showTitle;
+        },
+        nextItem() {
+          this.currentIndex = (this.currentIndex + 1) % this.items.length;
+        },
+        previousItem() {
+          this.currentIndex =
+            (this.currentIndex - 1 + this.items.length) % this.items.length;
+        }
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
